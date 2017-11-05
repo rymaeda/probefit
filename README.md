@@ -26,13 +26,16 @@ The program has the following options:
 
 
 SOURCE CODE
+
 The source was coded using LCC-Win IDE (Windows) but use just standardized functions calls, so must compile without any flaw in many  operating systems. Apologize the messy.
 
 
 IDEAS
+
 As command line interface are something old (last millennia!!!) maybe someday I make one true MS-Windows version. Maybe...
 
 
 AUTHOR
+
 Constructive criticism and sugestions are always welcome (please note that English is not my daily language):
 rymaedaATyahoo.com 
