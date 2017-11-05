@@ -10,6 +10,7 @@
 
 char FileName[256];
 double mx, my, mz;
+double cf; //conversion factor
 
 void Usage(char *programName){
 	fprintf(stderr,"%s usage:\n",programName);
@@ -31,7 +32,7 @@ int HandleOptions(int argc,char *argv[]){
 				break;
 			case 'h':
 			case 'H':
-				if (!stricmp(argv[i]+1,"help")) {
+				if (!strcmp(argv[i]+1,"help")) {
 					Usage(argv[0]);
 					break;
 				}
@@ -43,24 +44,34 @@ int HandleOptions(int argc,char *argv[]){
 				break;
 			case 'm':
 				//milimeters/metric system
-				mx/=25.4;
-				my/=25.4;
-				mz/=25.4;
+				cf= 1 / 25.4;
 				//printf("m");
 				break;
 			case 'x':
 				//x scale
-				mx*= strtod(argv[i+1], NULL);
+				mx= strtod(argv[i+1], NULL);
+				if (mx==0){
+					fprintf(stderr, "\nerror: '-x' option must be followed by one numerical value\n");
+					exit(-2);
+				}
 				i++;
 				break;
 			case 'y':
 				//y scale
-				my*= strtod(argv[i+1], NULL);
+				my= strtod(argv[i+1], NULL);
+				if (my==0){
+					fprintf(stderr, "\nerror: '-y' option must be followed by one numerical value\n");
+					exit(-2);
+				}
 				i++;
 				break;
 			case 'z':
 				//z scale
-				mz*= strtod(argv[i+1], NULL);
+				mz= strtod(argv[i+1], NULL);
+				if (mz==0){
+					fprintf(stderr, "\nerror: '-z' option must be followed by one numerical value\n");
+					exit(-2);
+				}
 				i++;
 				break;
 			default:
@@ -112,9 +123,9 @@ void PLReadFile(char *filename){
 		if (c = fgets(oneline, 254, fp)){
 			sscanf(oneline, "%lf %lf %lf", &x, &y, &z);
 			//printf("(%d)Oneline: %s",i,c);
-			PointList[iX]= x * mx;
-			PointList[iY]= y * my;
-			PointList[iZ]= z * mz;
+			PointList[iX]= x * mx * cf;
+			PointList[iY]= y * my * cf;
+			PointList[iZ]= z * mz * cf;
 			//debug
 			//printf("\t[%.3lf][%.3lf][%.3lf]\n", PointList[iX], PointList[iY], PointList[iZ]);
 			i++;
@@ -194,7 +205,7 @@ int main(int argc,char *argv[]){
 		Usage(argv[0]);
 		return 1;
 	}
-	mx= my= mz= 1.0;
+	mx= my= mz= cf= 1.0;
 	HandleOptions(argc,argv);
 	PLReadFile(FileName);
 	PLAnalysis();
