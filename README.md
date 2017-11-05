@@ -1,5 +1,5 @@
 # probefit
-LinuxCNC probefile.txt to Viacad grid surface conversion
+LinuxCNC PROBE-RESULTS.TXT to Viacad grid surface conversion
 
 
 ABOUT
