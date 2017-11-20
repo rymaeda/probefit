@@ -9,6 +9,7 @@ Probefit was made for the specific situation when we have one PROBE-RESULTS.TXT 
 The following link points to one discussion on Viacad forum, there Tim Olson share one .pdf document where there are the description for necessary format in Viacad import points cloud text file:
 http://forum.punchcad.com/default.aspx?g=posts&m=335#post335
 
+![image][./image1.jpg]
 
 OPTIONS
 
