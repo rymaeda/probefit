@@ -31,7 +31,7 @@ The program has the following options:
 
 SOURCE CODE
 
-The source was coded using LCC-Win IDE (Windows) but use just standardized functions calls, so must compile without any flaw in many  operating systems. Apologize the messy.
+The source was coded using LCC-Win IDE (Windows, https://lcc-win32.services.net/) but use just standardized functions calls, so must compile without any flaw in many  operating systems. Apologize the messy.
 
 
 IDEAS
